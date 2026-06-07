@@ -29,7 +29,7 @@ export default function Navbar({ lenis }) {
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <a href="#top" className="nav__logo" onClick={(e) => go(e, "#top")}>
-        Atelier<span>®</span>
+        ONYX<span>®</span>
       </a>
 
       <nav className={`nav__links ${open ? "is-open" : ""}`}>

@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="footer" id="footer">
       <div className="footer__big">
-        <span>Atelier</span>
+        <span>ONYX</span>
       </div>
       <div className="footer__row">
         <div className="footer__col">
@@ -20,13 +20,13 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>Contact</h4>
-          <a href="mailto:hello@atelier.design">hello@atelier.design</a>
-          <a href="tel:+910000000000">+91 00000 00000</a>
-          <span>Sector 44, Gurgaon</span>
+          <a href="mailto:hello@onyx.design">hello@onyx.design</a>
+          <a href="https://wa.me/918207538009" target="_blank" rel="noreferrer">+91 82075 38009</a>
+          <span>Gurgaon, India</span>
         </div>
       </div>
       <div className="footer__base">
-        <span>© {new Date().getFullYear()} Atelier Interior Design Studio.</span>
+        <span>© {new Date().getFullYear()} ONYX — Design · Architecture · Construction.</span>
         <span>Crafted with care.</span>
       </div>
     </footer>

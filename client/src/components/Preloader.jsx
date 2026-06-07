@@ -26,10 +26,10 @@ export default function Preloader({ onDone }) {
   return (
     <div className="preloader" ref={root}>
       <div className="pre-line">
-        <span>ATELIER</span>
+        <span>ONYX</span>
       </div>
       <div className="pre-line">
-        <span>INTERIOR&nbsp;DESIGN&nbsp;STUDIO</span>
+        <span>DESIGN&nbsp;·&nbsp;ARCHITECTURE&nbsp;·&nbsp;CONSTRUCTION</span>
       </div>
       <div className="pre-count" ref={count}>000</div>
     </div>

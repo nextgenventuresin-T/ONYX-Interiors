@@ -5,3 +5,9 @@
   base = "client"
   command = "npm install && npm run build"
   publish = "dist"
+
+# SPA fallback so client-side routes (/project/:id) resolve to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

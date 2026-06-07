@@ -27,11 +27,25 @@ const slides = [
     poster: "/assets/images/projects/sunset-penthouse.jpg",
   },
   {
-    title: "The Atelier Kitchen",
+    title: "The Signature Kitchen",
     location: "Gurugram",
     category: "Kitchen",
     video: "/assets/videos/video4.mp4",
     poster: "/assets/images/projects/atelier-kitchen.jpg",
+  },
+  {
+    title: "Apartment Reborn",
+    location: "Gurugram",
+    category: "Renovation",
+    video: "/assets/videos/video5.mp4",
+    poster: "/assets/images/projects/skyline-apartments.jpg",
+  },
+  {
+    title: "The Pool Villa",
+    location: "Goa",
+    category: "Architecture",
+    video: "/assets/videos/video6.mp4",
+    poster: "/assets/images/projects/courtyard-pool.jpg",
   },
 ];
 

@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useReveal } from "../lib/useReveal";
-import { apiUrl } from "../lib/api";
-
-const fallback = [
-  { no: "01", title: "Interior Design", body: "End-to-end interiors — concept, spatial planning, material palettes and bespoke detailing tailored to how you live." },
-  { no: "02", title: "Architecture", body: "From massing to façade, we shape buildings that hold light beautifully and age with grace." },
-  { no: "03", title: "Turnkey Execution", body: "A single accountable team from drawing to handover — civil, joinery, lighting and styling." },
-  { no: "04", title: "Styling & Art Curation", body: "The final layer — furniture, objects, textiles and art chosen to give a space its soul." },
-];
+import { services } from "../data/content";
 
 export default function Services() {
-  const [services, setServices] = useState(fallback);
-  const scope = useReveal([services]);
-
-  useEffect(() => {
-    fetch(apiUrl("/api/services"))
-      .then((r) => r.json())
-      .then((d) => Array.isArray(d) && d.length && setServices(d))
-      .catch(() => {});
-  }, []);
+  const scope = useReveal();
 
   return (
     <section className="services" id="services" ref={scope}>
@@ -29,9 +14,12 @@ export default function Services() {
       <ul className="services__list">
         {services.map((s) => (
           <li className="service" key={s.no} data-reveal>
-            <span className="service__no">{s.no}</span>
-            <h3 className="service__title">{s.title}</h3>
-            <p className="service__body">{s.body}</p>
+            <Link className="service__link" to={`/project/${s.link}`}>
+              <span className="service__no">{s.no}</span>
+              <h3 className="service__title">{s.title}</h3>
+              <p className="service__body">{s.body}</p>
+              <span className="service__arrow">↗</span>
+            </Link>
           </li>
         ))}
       </ul>
