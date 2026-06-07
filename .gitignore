@@ -1,4 +1,6 @@
 node_modules/
+.ytdlp-venv/
+*-venv/
 dist/
 .env
 .DS_Store
