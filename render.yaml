@@ -1,0 +1,13 @@
+# Render blueprint for the backend API (server/).
+# In Render: New + → Blueprint → pick this repo. It reads this file.
+services:
+  - type: web
+    name: atelier-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"

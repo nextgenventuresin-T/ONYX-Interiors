@@ -1,0 +1,17 @@
+{
+  "name": "interior-design-studio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Luxury interior design studio website — React + Node, cinematic GSAP/Lenis animations",
+  "scripts": {
+    "install:all": "npm install && npm --prefix client install && npm --prefix server install",
+    "dev": "concurrently -n CLIENT,SERVER -c cyan,magenta \"npm --prefix client run dev\" \"npm --prefix server run dev\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

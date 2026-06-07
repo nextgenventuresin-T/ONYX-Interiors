@@ -1,0 +1,7 @@
+# Netlify config for the frontend (client/). Netlify builds the Vite app and
+# publishes the static output. Set VITE_API_URL in the Netlify dashboard if you
+# also deploy the backend.
+[build]
+  base = "client"
+  command = "npm install && npm run build"
+  publish = "dist"
