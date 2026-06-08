@@ -6,6 +6,9 @@
 
 const c = (f) => `/assets/images/projects/${f}.jpg`;
 const g = (f) => `/assets/images/gallery/${f}.jpg`;
+// per-project gallery image: pg("courtyard-pool", 3) -> .../courtyard-pool/03.jpg
+const pg = (id, n) => `/assets/images/projects/${id}/${String(n).padStart(2, "0")}.jpg`;
+const galleryOf = (id, count = 5) => Array.from({ length: count }, (_, i) => pg(id, i + 1));
 
 export const projects = [
   {
@@ -96,7 +99,7 @@ export const projects = [
     intro:
       "An intimate water court framed by a pergola, an open fire and lush planting — built for the golden hour.",
     body: "Natural stone, teak loungers and layered greenery blur the line between house and garden. By night, fire and water do the talking.",
-    gallery: [c("courtyard-pool"), g("balcony"), g("living"), c("sunset-penthouse"), g("dining")],
+    gallery: galleryOf("courtyard-pool"),
   },
   {
     id: "onyx-residences",

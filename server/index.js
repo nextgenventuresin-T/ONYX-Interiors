@@ -19,7 +19,7 @@ app.post("/api/contact", (req, res) => {
   if (!name || !email || !message) {
     return res.status(400).json({ ok: false, error: "Missing fields." });
   }
-  console.log("📩 New enquiry:", { name, email, message });
+  console.log(" New enquiry:", { name, email, message });
   res.json({ ok: true, message: "Thank you — we'll be in touch shortly." });
 });
 
