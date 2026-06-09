@@ -18,12 +18,21 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
-      setStatus({ type: "ok", msg: data.message });
+      // Parse defensively: a sleeping/cold-starting server can return an
+      // empty or non-JSON body, which would otherwise crash res.json().
+      const text = await res.text();
+      let data = {};
+      try { data = text ? JSON.parse(text) : {}; } catch { data = {}; }
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Something went wrong.");
+      }
+      setStatus({ type: "ok", msg: data.message || "Thank you — we'll be in touch shortly." });
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      setStatus({ type: "err", msg: err.message });
+      setStatus({
+        type: "err",
+        msg: "Couldn't send just now — the server may be waking up. Please try again in a moment.",
+      });
     }
   };
 
