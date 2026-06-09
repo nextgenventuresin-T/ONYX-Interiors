@@ -39,9 +39,10 @@ export default function Contact() {
           what you're dreaming of.
         </p>
         <div className="contact__details">
-          <a href="mailto:hello@onyx.design">hello@onyx.design</a>
+          <a href="mailto:sudhirkumargaya198@gmail.com">sudhirkumargaya198@gmail.com</a>
           <a href="https://wa.me/918207538009" target="_blank" rel="noreferrer">+91 82075 38009</a>
-          <span>Gurgaon, India</span>
+          <a href="tel:+918092407475">+91 80924 07475</a>
+          <span>Domuhan, Cherki Rd, Parariya, Bihar 824231, India</span>
         </div>
       </div>
 

@@ -20,13 +20,14 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>Contact</h4>
-          <a href="mailto:hello@onyx.design">hello@onyx.design</a>
+          <a href="mailto:sudhirkumargaya198@gmail.com">sudhirkumargaya198@gmail.com</a>
           <a href="https://wa.me/918207538009" target="_blank" rel="noreferrer">+91 82075 38009</a>
-          <span>Gurgaon, India</span>
+          <a href="tel:+918092407475">+91 80924 07475</a>
+          <span>Domuhan, Cherki Rd, Parariya,<br />Bihar 824231, India</span>
         </div>
       </div>
       <div className="footer__base">
-        <span>© {new Date().getFullYear()} ONYX — Design · Architecture · Construction.</span>
+        <span>© {new Date().getFullYear()} ONYX Interior · Proprietor Sudhir Kumar.</span>
         <span>Crafted with care.</span>
       </div>
     </footer>
