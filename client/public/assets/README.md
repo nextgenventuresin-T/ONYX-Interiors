@@ -16,7 +16,7 @@ these exact paths and they appear automatically (no code changes needed).
 ## Project covers  (`work` grid)
 
 | Path | Suggested subject (from your refs) |
-| --- | --- |
+| --- | --- |   
 | `images/projects/azure-villa.jpg`      | Modern white villa exterior |
 | `images/projects/grand-living.jpg`     | Double-height luxury living room |
 | `images/projects/sunset-penthouse.jpg` | Living room with sunset skyline windows |
