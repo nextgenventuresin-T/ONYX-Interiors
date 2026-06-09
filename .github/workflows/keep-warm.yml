@@ -1,0 +1,25 @@
+name: Keep Render API warm
+
+# Pings the API's health endpoint so Render's free web service doesn't sleep.
+# NOTE: GitHub's scheduled runs are free for PUBLIC repos. For PRIVATE repos
+# they consume Actions minutes — in that case use an external pinger instead
+# (cron-job.org / UptimeRobot), which is unconditionally free and more punctual.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 10 minutes
+  workflow_dispatch: {} # allow manual run from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping API health
+        run: |
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 60 \
+              https://onyx-api-g4kk.onrender.com/api/health) && \
+            echo "Attempt $i -> HTTP $code" && [ "$code" = "200" ] && exit 0
+            echo "retrying in 20s…"; sleep 20
+          done
+          echo "API did not return 200 after retries"; exit 1
