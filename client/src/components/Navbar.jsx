@@ -22,6 +22,12 @@ export default function Navbar({ lenis }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Lock page scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   const scrollToTop = () => {
     if (lenis) lenis.scrollTo(0, { offset: 0 });
     else window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,9 +56,9 @@ export default function Navbar({ lenis }) {
   };
 
   return (
-    <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+    <header className={`nav ${scrolled ? "nav--scrolled" : ""} ${open ? "nav--menu-open" : ""}`}>
       <Link to="/" className="nav__logo" onClick={onLogo}>
-        ONYX<span>®</span>
+        ONYX<span>Interior</span>
       </Link>
 
       <nav className={`nav__links ${open ? "is-open" : ""}`}>

@@ -67,18 +67,22 @@ section { padding: clamp(5rem, 12vw, 11rem) clamp(1.5rem, 6vw, 7rem); }
   position: fixed; inset: 0; z-index: 1000;
   background: var(--bg);
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.2rem;
+  align-items: center; justify-content: center; gap: 0.3rem;
+  padding: 1.5rem; text-align: center; overflow: hidden;
 }
-.pre-line { overflow: hidden; }
+.pre-line { overflow: hidden; width: 100%; text-align: center; }
 .pre-line span {
   display: block;
   font-family: var(--serif);
-  font-size: clamp(1.6rem, 5vw, 3.2rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.6rem, 6vw, 3.2rem);
+  letter-spacing: 0.1em;
 }
-.pre-line:last-of-type span { font-size: 0.8rem; letter-spacing: 0.4em; color: var(--cream-dim); }
+.pre-line:last-of-type span {
+  font-size: clamp(0.56rem, 2.6vw, 0.8rem);
+  letter-spacing: 0.28em; color: var(--cream-dim);
+}
 .pre-count {
-  position: absolute; bottom: 2rem; right: 2.4rem;
+  position: absolute; bottom: 1.6rem; right: clamp(1.2rem, 5vw, 2.4rem);
   font-family: var(--serif); font-size: 1.4rem; color: var(--gold);
 }
 
@@ -97,8 +101,10 @@ section { padding: clamp(5rem, 12vw, 11rem) clamp(1.5rem, 6vw, 7rem); }
   color: var(--cream); /* dark ink over cream */
   border-bottom: 1px solid var(--line);
 }
-.nav__logo { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; }
-.nav__logo span { color: var(--gold); font-size: 0.7rem; vertical-align: super; }
+/* when the mobile menu is open, lift the whole nav above the WhatsApp FAB */
+.nav--menu-open { z-index: 250; color: var(--cream); }
+.nav__logo { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; white-space: nowrap; }
+.nav__logo span { color: var(--gold); font-style: italic; font-size: 0.78em; margin-left: 0.32em; letter-spacing: 0.01em; }
 .nav__links { display: flex; gap: 2.2rem; }
 .nav__links a {
   font-size: 0.85rem; letter-spacing: 0.06em;
@@ -499,11 +505,14 @@ section { padding: clamp(5rem, 12vw, 11rem) clamp(1.5rem, 6vw, 7rem); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .nav { padding: 1.05rem clamp(1.2rem, 5vw, 1.8rem); }
+  .nav__logo { font-size: 1.22rem; position: relative; z-index: 95; }
   .nav__links {
     position: fixed; inset: 0; background: var(--bg); color: var(--cream);
     flex-direction: column;
     align-items: center; justify-content: center; gap: 2rem; font-size: 1.4rem;
     transform: translateY(-100%); transition: transform 0.6s var(--ease); z-index: 90;
+    padding: 2rem;
   }
   .nav__links.is-open { transform: translateY(0); }
   .nav__cta { display: none; }
@@ -541,6 +550,8 @@ section { padding: clamp(5rem, 12vw, 11rem) clamp(1.5rem, 6vw, 7rem); }
 
 @media (max-width: 600px) {
   .work__grid { column-count: 1; }
+  .pre-line span { font-size: 1.5rem; letter-spacing: 0.06em; }
+  .pre-line:last-of-type span { font-size: 0.5rem; letter-spacing: 0.13em; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -26,7 +26,7 @@ export default function Preloader({ onDone }) {
   return (
     <div className="preloader" ref={root}>
       <div className="pre-line">
-        <span>ONYX</span>
+        <span>ONYX&nbsp;INTERIOR</span>
       </div>
       <div className="pre-line">
         <span>DESIGN&nbsp;·&nbsp;ARCHITECTURE&nbsp;·&nbsp;CONSTRUCTION</span>
