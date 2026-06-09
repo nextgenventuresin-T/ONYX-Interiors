@@ -1,13 +1,40 @@
-# Render blueprint for the backend API (server/).
-# In Render: New + → Blueprint → pick this repo. It reads this file.
+# Render Blueprint — deploys BOTH the API (Node) and the frontend (static site).
+# In Render: New + → Blueprint → connect this GitHub repo → it reads this file.
+# After it creates the services, set the two `sync: false` secrets (below).
 services:
+  # ---------- Backend API (Express + Postgres) ----------
   - type: web
-    name: atelier-api
+    name: onyx-api
     runtime: node
     rootDir: server
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "20"
+      # Paste your Neon connection string here in the Render dashboard:
+      - key: DATABASE_URL
+        sync: false
+      # Protects GET /api/contacts — Render auto-generates a random value:
+      - key: ADMIN_TOKEN
+        generateValue: true
+
+  # ---------- Frontend (Vite static site) ----------
+  - type: web
+    name: onyx-web
+    runtime: static
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    # SPA fallback so /project/:id resolves on direct load:
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Set this to the API's URL after onyx-api deploys
+      # (e.g. https://onyx-api.onrender.com):
+      - key: VITE_API_URL
+        sync: false
