@@ -14,8 +14,8 @@ export default function Footer() {
         </div>
         <div className="footer__col">
           <h4>Social</h4>
-          <a href="#" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="#" target="_blank" rel="noreferrer">Pinterest</a>
+          <a href="https://www.instagram.com/onyxinterior.in/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="#" target="_blank" rel="noreferrer">Facebook</a>
           <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
         <div className="footer__col">

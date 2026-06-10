@@ -5,6 +5,7 @@ const links = [
   { label: "Work", href: "#work" },
   { label: "Studio", href: "#studio" },
   { label: "Services", href: "#services" },
+  { label: "Flats", to: "/flats" },
   { label: "Buildings", to: "/project/onyx-residences" }, // construction showcase
   { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },

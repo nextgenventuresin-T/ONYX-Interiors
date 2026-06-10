@@ -239,4 +239,5 @@ export const services = [
   { no: "04", title: "Apartment & Residential Architecture", body: "Multi-unit apartments and residences designed for efficient layouts, natural light and a sense of arrival on every floor.", link: "skyline-apartments" },
   { no: "05", title: "Turnkey Execution", body: "A single accountable team from drawing to handover — civil, joinery, lighting and styling.", link: "azure-villa" },
   { no: "06", title: "Styling & Art Curation", body: "The final layer — furniture, objects, textiles and art chosen to give a space its soul.", link: "sunset-penthouse" },
+  { no: "07", title: "2, 3 & 4 BHK Flats", body: "Turnkey apartment interiors — living halls, bedrooms, modular kitchens and baths, delivered move-in ready.", path: "/flats" },
 ];

@@ -14,7 +14,7 @@ export default function Services() {
       <ul className="services__list">
         {services.map((s) => (
           <li className="service" key={s.no} data-reveal>
-            <Link className="service__link" to={`/project/${s.link}`}>
+            <Link className="service__link" to={s.path || `/project/${s.link}`}>
               <span className="service__no">{s.no}</span>
               <h3 className="service__title">{s.title}</h3>
               <p className="service__body">{s.body}</p>

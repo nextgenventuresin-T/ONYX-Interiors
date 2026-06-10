@@ -8,6 +8,8 @@ import Footer from "./sections/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
+import Flats from "./pages/Flats";
+import Admin from "./pages/Admin";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,18 +40,22 @@ export default function App() {
     };
   }, [location.pathname, lenis]);
 
+  const isAdmin = location.pathname.startsWith("/admin");
+
   return (
     <>
-      {!loaded && <Preloader onDone={() => setLoaded(true)} />}
-      <Navbar lenis={lenis} />
+      {!loaded && !isAdmin && <Preloader onDone={() => setLoaded(true)} />}
+      {!isAdmin && <Navbar lenis={lenis} />}
       <main className={loaded ? "is-loaded" : ""}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/flats" element={<Flats />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
-      <Footer />
-      <WhatsAppButton />
+      {!isAdmin && <Footer />}
+      {!isAdmin && <WhatsAppButton />}
     </>
   );
 }

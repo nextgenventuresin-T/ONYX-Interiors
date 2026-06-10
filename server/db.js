@@ -34,7 +34,57 @@ export async function initDb() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     );
   `);
-  console.log("✓ Postgres connected, 'contacts' table ready.");
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS flats (
+      id          SERIAL PRIMARY KEY,
+      title       TEXT        NOT NULL,
+      type        TEXT        NOT NULL DEFAULT '3 BHK',
+      description TEXT        NOT NULL DEFAULT '',
+      image       TEXT        NOT NULL DEFAULT '',
+      location    TEXT        NOT NULL DEFAULT '',
+      status      TEXT        NOT NULL DEFAULT 'Available',
+      sort_order  INTEGER     NOT NULL DEFAULT 0,
+      created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+    );
+  `);
+  console.log("✓ Postgres connected, 'contacts' + 'flats' tables ready.");
+}
+
+// ---- Flats (managed from the admin panel) ----
+export async function getFlats() {
+  if (!hasDb) return [];
+  const { rows } = await pool.query(
+    `SELECT id, title, type, description, image, location, status, sort_order, created_at
+     FROM flats ORDER BY sort_order ASC, id ASC`
+  );
+  return rows;
+}
+
+export async function createFlat(f) {
+  if (!hasDb) throw new Error("No database configured.");
+  const { rows } = await pool.query(
+    `INSERT INTO flats (title, type, description, image, location, status, sort_order)
+     VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
+    [f.title, f.type || "3 BHK", f.description || "", f.image || "", f.location || "", f.status || "Available", f.sort_order || 0]
+  );
+  return rows[0];
+}
+
+export async function updateFlat(id, f) {
+  if (!hasDb) throw new Error("No database configured.");
+  const { rows } = await pool.query(
+    `UPDATE flats SET
+       title=$1, type=$2, description=$3, image=$4, location=$5, status=$6, sort_order=$7
+     WHERE id=$8 RETURNING *`,
+    [f.title, f.type, f.description, f.image, f.location, f.status, f.sort_order || 0, id]
+  );
+  return rows[0] || null;
+}
+
+export async function deleteFlat(id) {
+  if (!hasDb) throw new Error("No database configured.");
+  await pool.query(`DELETE FROM flats WHERE id=$1`, [id]);
+  return true;
 }
 
 // Persist one enquiry. Falls back to a logged record if there's no DB.
