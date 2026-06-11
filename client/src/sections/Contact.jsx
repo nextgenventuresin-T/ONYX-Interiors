@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useReveal } from "../lib/useReveal";
 import { apiUrl } from "../lib/api";
 
+const OWNER_WHATSAPP = "918207538009"; // +91 82075 38009
+
 export default function Contact() {
   const scope = useReveal();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -9,9 +11,20 @@ export default function Contact() {
 
   const update = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  // Pre-filled WhatsApp link to the owner (no API key needed).
+  const whatsappUrl = (f) => {
+    const text =
+      `New enquiry — ONYX Interior\n\n` +
+      `Name: ${f.name}\n` +
+      `Email: ${f.email}\n` +
+      `Message: ${f.message}`;
+    return `https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(text)}`;
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     setStatus({ type: "loading", msg: "Sending…" });
+    const sent = { ...form }; // keep a copy before we clear the form
     try {
       const res = await fetch(apiUrl("/api/contact"), {
         method: "POST",
@@ -26,7 +39,15 @@ export default function Contact() {
       if (!res.ok || !data.ok) {
         throw new Error(data.error || "Something went wrong.");
       }
-      setStatus({ type: "ok", msg: data.message || "Thank you — we'll be in touch shortly." });
+      const wa = whatsappUrl(sent);
+      // Saved to DB — now open WhatsApp pre-filled to the owner (best effort;
+      // a fallback link is also shown in case the browser blocks the popup).
+      window.open(wa, "_blank", "noopener,noreferrer");
+      setStatus({
+        type: "ok",
+        msg: data.message || "Thank you — we'll be in touch shortly.",
+        wa,
+      });
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
       setStatus({
@@ -73,7 +94,17 @@ export default function Contact() {
           {status?.type === "loading" ? "Sending…" : "Send enquiry"}
         </button>
         {status && status.type !== "loading" && (
-          <p className={`form-status form-status--${status.type}`}>{status.msg}</p>
+          <p className={`form-status form-status--${status.type}`}>
+            {status.msg}
+            {status.wa && (
+              <>
+                {" "}
+                <a href={status.wa} target="_blank" rel="noopener noreferrer" className="form-status__wa">
+                  Send it on WhatsApp →
+                </a>
+              </>
+            )}
+          </p>
         )}
       </form>
     </section>
