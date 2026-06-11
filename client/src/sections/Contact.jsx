@@ -52,6 +52,7 @@ export default function Contact() {
           <a href="https://wa.me/918207538009" target="_blank" rel="noreferrer">+91 82075 38009</a>
           <a href="tel:+918092407475">+91 80924 07475</a>
           <span>Domuhan, Cherki Rd, Parariya, Bihar 824231, India</span>
+          <span>Open daily · 9 AM – 9 PM</span>
         </div>
       </div>
 

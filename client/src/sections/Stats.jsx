@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { value: 180, suffix: "+", label: "Projects delivered" },
+  { value: 500, suffix: "+", label: "Projects delivered" },
   { value: 14, suffix: "", label: "Years of craft" },
   { value: 32, suffix: "", label: "Cities" },
   { value: 96, suffix: "%", label: "Referral clients" },

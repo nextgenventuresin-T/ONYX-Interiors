@@ -15,8 +15,8 @@ export default function Footer() {
         <div className="footer__col">
           <h4>Social</h4>
           <a href="https://www.instagram.com/onyxinterior.in/" target="_blank" rel="noreferrer">Instagram</a>
-          <a href="#" target="_blank" rel="noreferrer">Facebook</a>
-          <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.facebook.com/share/1DjEet8WY1/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://www.linkedin.com/in/onyx-interior-b64883415/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
         <div className="footer__col">
           <h4>Contact</h4>
@@ -24,6 +24,7 @@ export default function Footer() {
           <a href="https://wa.me/918207538009" target="_blank" rel="noreferrer">+91 82075 38009</a>
           <a href="tel:+918092407475">+91 80924 07475</a>
           <span>Domuhan, Cherki Rd, Parariya,<br />Bihar 824231, India</span>
+          <span>Open daily · 9 AM – 9 PM</span>
         </div>
       </div>
       <div className="footer__base">

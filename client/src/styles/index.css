@@ -111,8 +111,10 @@ section { padding: clamp(5rem, 12vw, 11rem) clamp(1.5rem, 6vw, 7rem); }
 .nav--scrolled::before { opacity: 1; }
 /* when the mobile menu is open, lift the whole nav above the WhatsApp FAB */
 .nav--menu-open { z-index: 250; color: var(--cream); }
-.nav__logo { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; white-space: nowrap; }
-.nav__logo span { color: var(--gold); font-style: italic; font-size: 0.78em; margin-left: 0.32em; letter-spacing: 0.01em; }
+.nav__logo { display: inline-flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; white-space: nowrap; }
+.nav__logo-img { height: 34px; width: auto; display: block; }
+.nav__logo-text { display: inline-flex; align-items: baseline; }
+.nav__logo-text span { color: var(--gold); font-style: italic; font-size: 0.78em; margin-left: 0.32em; letter-spacing: 0.01em; }
 .nav__links { display: flex; gap: 2.2rem; }
 .nav__links a {
   font-size: 0.85rem; letter-spacing: 0.06em;

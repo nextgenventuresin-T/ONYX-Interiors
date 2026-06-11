@@ -59,7 +59,13 @@ export default function Navbar({ lenis }) {
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""} ${open ? "nav--menu-open" : ""}`}>
       <Link to="/" className="nav__logo" onClick={onLogo}>
-        ONYX<span>Interior</span>
+        <img
+          src="/assets/logo.png"
+          alt=""
+          className="nav__logo-img"
+          onError={(e) => { e.currentTarget.style.display = "none"; }}
+        />
+        <span className="nav__logo-text">ONYX<span>Interior</span></span>
       </Link>
 
       <nav className={`nav__links ${open ? "is-open" : ""}`}>
